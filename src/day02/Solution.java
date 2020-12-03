@@ -1,14 +1,15 @@
 package day02;
 
+import utils.Input;
+
 import java.io.*;
 import java.net.URL;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Solution {
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         List<String> input = processInput();
         countValidPasswordsWithCount(input);
         countValidPasswordsWithPosition(input);
@@ -68,11 +69,9 @@ public class Solution {
         return isLetterInFirstPosition != isLetterInSecondPosition;
     }
 
-    private static List<String> processInput() throws IOException {
+    private static List<String> processInput() {
         URL path = Solution.class.getResource("input.txt");
         File f = new File(path.getFile());
-        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
-            return br.lines().collect(Collectors.toList());
-        }
+        return Input.fileToLineList(f);
     }
 }
