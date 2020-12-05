@@ -7,8 +7,6 @@ import java.net.URL;
 import java.util.List;
 
 public class Solution {
-
-
     public static void main(String[] args) {
         List<String> input = processInput();
         countValidPasswordsWithCount(input);

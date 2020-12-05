@@ -13,4 +13,34 @@ public class Input {
         }
         return null;
     }
+
+    public static String fileToString(File file) {
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        String line = null;
+        String ls = System.getProperty("line.separator");
+        while (true) {
+            try {
+                assert reader != null;
+                if ((line = reader.readLine()) == null) break;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stringBuilder.append(line);
+            stringBuilder.append(ls);
+        }
+        // delete the last new line separator
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        try {
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return stringBuilder.toString();
+    }
 }
