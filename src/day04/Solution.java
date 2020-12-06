@@ -17,7 +17,7 @@ public class Solution {
 
     public static void main(String[] args) {
         String input = readInput();
-        List<String> passportsData = getPassportData(input);
+        List<String> passportsData = Input.getGroupsAsList(input);
         List<Passport> passports = getPassports(passportsData);
         System.out.println(countValidPassports(passports));
 
@@ -43,15 +43,6 @@ public class Solution {
             passport.setValue(keyAndValue[0], keyAndValue[1]);
         }
         return passport;
-    }
-
-    private static List<String> getPassportData(String file) {
-        String[] passportsData = file.split("\\r\\n\\r\\n");
-        List<String> passports = new ArrayList<>();
-        for (String passport : passportsData) {
-            passports.add(passport.replaceAll("\\R", " "));
-        }
-        return passports;
     }
 
     private static String readInput() {

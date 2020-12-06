@@ -1,6 +1,7 @@
 package utils;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,7 +28,9 @@ public class Input {
         while (true) {
             try {
                 assert reader != null;
-                if ((line = reader.readLine()) == null) break;
+                if ((line = reader.readLine()) == null) {
+                    break;
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -42,5 +45,14 @@ public class Input {
             e.printStackTrace();
         }
         return stringBuilder.toString();
+    }
+
+    public static List<String> getGroupsAsList(String file) {
+        String[] groups = file.split("\\r\\n\\r\\n");
+        List<String> groupsList = new ArrayList<>();
+        for (String group : groups) {
+            groupsList.add(group.replaceAll("\\R", " "));
+        }
+        return groupsList;
     }
 }
