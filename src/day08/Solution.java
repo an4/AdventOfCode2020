@@ -72,7 +72,6 @@ public class Solution {
     private static int run(List<String> instructions) {
         int acc = 0;
         int pos = 0;
-        String[] ins = new String[instructions.size()];
         Set<Integer> executed = new HashSet<>();
 
         while(!executed.contains(pos) && pos<instructions.size()) {
